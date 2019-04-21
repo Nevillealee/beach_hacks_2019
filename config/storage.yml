@@ -8,13 +8,13 @@ local:
 
 google:
   service: GCS
-  project: communicateAI
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  project: communcateai
+  credentials:  <%= Rails.root.join("config/secrets/communicate-ai.json") %>
   bucket: beach_hacks_2019
 
 google_dev:
   service: GCS
-  project: communicateAI
+  project: communcateai 
   credentials: <%= Rails.root.join("config/secrets/communicate-ai.json") %>
   bucket: beach_hacks_2019
 

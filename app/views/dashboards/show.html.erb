@@ -4,16 +4,25 @@
   <h1>My Dashboard</h1>
     <ul class="list-group">
       <% @uploads.each do |my_upload| %>
-        <li class="list-group-item">
+
+      <%= form_tag analyze_path, method: "post", html: {class: "nifty_form"} do %>
+        <%= hidden_field_tag(:file_key, my_upload.file.key) %>
+        <%= submit_tag "Analyze" %>
+      <% end %>
+
+      <div class="p-3">
+      <h3 class="d-block"><%=my_upload.title %></h3>
+        <li class="list-group-item list-group-item-action">
           <% if my_upload.file.try(:previewable?) %>
-            <%= link_to(image_tag(my_upload.file.preview(resize: "200x200>")),  rails_blob_path(my_upload.file, disposition: "attachment"))
-            %>
+            <%= link_to(image_tag(my_upload.file.preview(resize: "200x200>")),  rails_blob_path(my_upload.file, disposition: "attachment")) %>
           <% elsif my_upload.file.try(:variable?) %>
             <%= link_to(image_tag(my_upload.file.variant(resize: "200x200")), rails_blob_path(my_upload.file, disposition: "attachment"))%>
           <% else %>
             <%= link_to "Download file", rails_blob_path(my_upload.file, disposition: "attachment") %>
           <% end %>
         </li>
+      <span class="text-dark d-block"><%=my_upload.file.content_type%></span>
+    </div>
       <% end %>
   </ul>
 </div>
