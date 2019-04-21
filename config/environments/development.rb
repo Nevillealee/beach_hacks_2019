@@ -1,5 +1,5 @@
 Rails.application.configure do
-  # added for devise 
+  # added for devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,7 +30,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :google_dev
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

@@ -1,0 +1,13 @@
+<br />
+<div class="custom-box col-6 offset-1">
+  <h1>Upload a new file</h1>
+  <%= simple_form_for @upload, url: user_uploads_path, class: "form-inline" do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.file_field :file %>
+    <br />
+    <%= f.submit "Upload", class: 'btn btn-primary' %>
+    <br />
+  <% end %>
+  <br />
+</div>
