@@ -6,7 +6,9 @@ class User::UploadsController < ApplicationController
   end
 
   def create
-    @upload = current_user.uploads.create!(upload_params)
+    @upload = current_user.uploads.new(upload_params)
+    @upload.file.attach(params[:upload][:file])
+    @upload.save!
     redirect_to dashboard_path
   end
 
